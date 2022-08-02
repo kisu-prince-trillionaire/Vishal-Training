@@ -1,0 +1,104 @@
+CREATE DATABASE ECOMMERCE
+USE ECOMMERCE
+
+-- PRODUCT TABLE
+CREATE TABLE PRODUCT(P_ID INT PRIMARY KEY IDENTITY(1,1), P_NAME NVARCHAR(20), P_PRICE NUMERIC(20),
+P_WEIGHT NUMERIC(10), P_STOCK NUMERIC(20),DISCOUNT NUMERIC(10),TAX NUMERIC(10), CREATEDAT NUMERIC(5))
+
+INSERT INTO PRODUCT VALUES('TEA', 100, 500, 100, 3, 18, 2022)
+INSERT INTO PRODUCT VALUES('COFFEE', 200, 500, 50, 6, 15, 2021)
+INSERT INTO PRODUCT VALUES('MILK', 50, 1000, 100, 7, 18, 2021)
+INSERT INTO PRODUCT VALUES('MIXTURE', 70, 200, 100, 2, 19, 2022)
+INSERT INTO PRODUCT VALUES('SUGAR', 50, 1000, 100, 9, 16, 2010)
+INSERT INTO PRODUCT VALUES('HORLICKS', 250, 500, 100, 4, 8, 2025)
+INSERT INTO PRODUCT VALUES('BOOST', 300, 800, 100, 3, 48, 2022)
+INSERT INTO PRODUCT VALUES('PROTEIN', 1000, 500, 100, 3, 18, 2020)
+INSERT INTO PRODUCT VALUES('CREAM', 500, 500, 100, 5, 28, 2018)
+INSERT INTO PRODUCT VALUES('MASALA', 100, 500, 100, 3, 18, 2022)
+
+SELECT * FROM PRODUCT
+
+
+-- CUSTOMER TABLE
+
+CREATE TABLE CUSTOMER(P_ID INT IDENTITY(1,1),C_NAME NVARCHAR(20), ADDRESS NVARCHAR(50), PAYMENT_MODE NVARCHAR(20), 
+PHONE NUMERIC(10))
+
+insert into Customer values('Rajesh', 'Mehrauli', 'Online', 9123456789)
+insert into Customer values('Ram', 'Gurgaon', 'Online', 976543218)
+insert into Customer values('Rohan', 'Noida', 'Online', 987654321)
+insert into Customer values('Jai', 'Pansheel enclave', 'Online', 9876543210)
+insert into Customer values('Aman', 'Dwarka', 'Online', 6543210987)
+insert into Customer values('Akshat', 'Vasant kunj', 'Online', 976543218)
+insert into Customer values('Ajitesh', 'Vasant vihar', 'Online', 8769543210)
+insert into Customer values('Sagar', 'Greater noida', 'Online', 0987654321)
+
+SELECT * FROM CUSTOMER
+
+
+--ORDER TABLE
+
+create table Orders(P_ID int identity(1,1),Deliverydate nvarchar(20),Order_qty numeric(10,0), Pincode numeric(10,0))
+
+insert into Orders values('15/8/22', 2, 110020)
+insert into Orders values('16/8/22', 1, 110020)
+insert into Orders values('18/8/22', 3, 110020)
+insert into Orders values('21/8/22', 6, 110020)
+insert into Orders values('17/8/22',10, 110020)
+insert into Orders values('25/8/22', 8, 110020)
+insert into Orders values('29/8/22', 9, 110020)
+insert into Orders values('30/8/22', 7, 110020)
+
+SELECT * FROM Orders
+
+--ACCOUNT TABLE
+
+create table Account(P_ID int identity(1,1),Total_amount numeric(10), Cashback numeric(10))
+
+insert into Account values(150000, 2000)
+insert into Account values(20000, 600)
+insert into Account values(50000, 1000)
+insert into Account values(20000, 1500)
+insert into Account values(35000, 400)
+insert into Account values(60000, 800)
+insert into Account values(90000, 900)
+insert into Account values(70000, 500)
+
+SELECT * FROM Account
+
+CREATE VIEW VIEW1
+AS
+SELECT p.P_ID, p.P_NAME, o.Deliverydate, o.Order_Qty
+FROM PRODUCT p
+INNER JOIN Orders o
+on p.P_ID = o.P_ID
+
+SELECT * from VIEW1
+
+CREATE VIEW VIEW2
+as
+select o.P_ID, o.Deliverydate, o.Order_Qty, o.Pincode, c.C_NAME, c.PAYMENT_MODE
+from Orders o
+inner join CUSTOMER c
+on o.P_ID = c.P_ID
+
+select * from VIEW2
+
+
+CREATE VIEW VIEW3
+as
+select o.P_ID, o.Deliverydate, o.Order_Qty, a.Total_amount, a.cashback
+from Orders o
+inner join Account a
+on o.P_ID = a.P_ID
+
+select * from VIEW3
+
+CREATE VIEW VIEW4
+as
+select c.P_ID, c.C_NAME, c.ADDRESS, a.Total_amount, a.cashback
+from CUSTOMER c
+inner join Account a
+on c.P_ID = a.P_ID
+
+select * from VIEW4
