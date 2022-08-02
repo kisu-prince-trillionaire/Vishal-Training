@@ -1,0 +1,70 @@
+CREATE DATABASE BHAVNA_CORP
+USE BHAVNA_CORP
+
+CREATE TABLE Personal_Info(Emp_Id int PRIMARY KEY IDENTITY(100,1), Name nvarchar(20), Email varchar(20), Age INT, Address varchar(50),
+Nationality nvarchar(20), Blood_Group nvarchar(5))
+
+INSERT INTO Personal_Info VALUES('Vishal Kumar', 'vishal@gmail.com', 21, 'Patna', 'Indian', 'B+')
+INSERT INTO Personal_Info VALUES('Mohit Kumar', 'mohit@gmail.com', 24, 'varanasi', 'Indian', 'A+')
+INSERT INTO Personal_Info VALUES('Shivam Kumar', 'shivam@gmail.com', 25, 'Paris', 'Italian', 'AB-')
+INSERT INTO Personal_Info VALUES('Vaibhav Kumar', 'vaibhav@gmail.com', 23, 'kashi', 'Indian', 'A+')
+INSERT INTO Personal_Info VALUES('Kabir Kumar', 'kabir@gmail.com', 22, 'Punjab', 'Indian', 'O+')
+INSERT INTO Personal_Info VALUES('Thomas Shelby', 'thomas@gmail.com', 24, 'Chicago', 'USA', 'AB+')
+INSERT INTO Personal_Info VALUES('Kevin Owens', 'kevin@gmail.com', 22, 'London', 'UK', 'AB+')
+INSERT INTO Personal_Info VALUES('Murli Kumar', 'murli@gmail.com', 25, 'Dhaka', 'Bangladesh', 'B+')
+INSERT INTO Personal_Info VALUES('Rahul Kumar', 'rahul@gmail.com', 27, 'kolkata', 'Indian', 'O+')
+INSERT INTO Personal_Info VALUES('Bharat Kumar', 'bharat@gmail.com', 25, 'Chennai', 'Indian', 'A+')
+
+
+
+CREATE TABLE Official_Info(Emp_Id int, Name nvarchar(20), Email varchar(20),  Department varchar(20),
+Role varchar(40), Manager varchar(20), Work_Location varchar(20))
+
+INSERT INTO Official_Info VALUES('Vishal Kumar', 'vishal@gmail.com','Engineering', 'Software Trainee', 'rahul' 'Hyderabad')
+INSERT INTO Official_Info VALUES('Mohit Kumar', 'mohit@gmail.com', 'Engineering', 'Software Trainee', 'mayank' 'Delhi')
+INSERT INTO Official_Info VALUES('Shivam Kumar', 'shivam@gmail.com', 'Engineering', 'Software Trainee', 'shyam' 'Hyderabad')
+INSERT INTO Official_Info VALUES('Vaibhav Kumar', 'vaibhav@gmail.com', 'Engineering', 'Software Trainee', 'rahul' 'Gurgao')
+INSERT INTO Official_Info VALUES('Kabir Kumar', 'kabir@gmail.com', 'Engineering', 'Software Trainee', 'mayank' 'Delhi')
+INSERT INTO Official_Info VALUES('Thomas Shelby', 'thomas@gmail.com', 'Engineering', 'Software Trainee', 'shyam' 'Hyderabad')
+INSERT INTO Official_Info VALUES('Kevin Owens', 'kevin@gmail.com', 'Engineering', 'Software Trainee', 'rahul' 'Hyderabad')
+INSERT INTO Official_Info VALUES('Murli Kumar', 'murli@gmail.com', 'Engineering', 'Software Trainee', 'shyam' 'Noida')
+INSERT INTO Official_Info VALUES('Rahul Kumar', 'rahul@gmail.com', 'Engineering', 'Software Trainee', 'mayank' 'Pune')
+INSERT INTO Official_Info VALUES('Bharat Kumar', 'bharat@gmail.com', 'Engineering', 'Software Trainee', 'rahul' 'Hyderabad')
+
+
+
+CREATE TABLE Salary(Emp_Id int, Name nvarchar(20), CTC numeric(20), Fixed numeric(20), HRA numeric(10), LTA numeric(10),
+Tax numeric(10))
+
+INSERT INTO Salary VALUES('Vishal Kumar', 'vishal@gmail.com', 550000,  450000, 110000, 55000, 15000)
+INSERT INTO Salary VALUES('Mohit Kumar', 'vishal@gmail.com', 650000,  450000, 110000, 55000, 15000)
+INSERT INTO Salary VALUES('Shivam Kumar', 'vishal@gmail.com', 750000,  450000, 110000, 55000, 15000)
+INSERT INTO Salary VALUES('Vaibhav Kumar', 'vishal@gmail.com', 550000,  450000, 110000, 55000, 15000)
+INSERT INTO Salary VALUES('Kabir Kumar', 'vishal@gmail.com', 850000,  450000, 110000, 55000, 15000)
+INSERT INTO Salary VALUES('Thomas Shelby', 'vishal@gmail.com', 550000,  450000, 110000, 55000, 15000)
+INSERT INTO Salary VALUES('kevin Owens', 'vishal@gmail.com', 950000,  450000, 110000, 55000, 15000)
+INSERT INTO Salary VALUES('Murli Kumar', 'vishal@gmail.com', 550000,  450000, 110000, 55000, 15000)
+INSERT INTO Salary VALUES('Rahul Kumar', 'vishal@gmail.com', 450000,  450000, 110000, 55000, 15000)
+INSERT INTO Salary VALUES('Bharat Kumar', 'vishal@gmail.com', 500000,  450000, 110000, 55000, 15000)
+
+
+SELECT  * FROM Personal_Info 
+SELECT  * FROM Official_Info
+SELECT * FROM Salary
+
+
+SELECT * FROM Personal_Info WHERE  Age>25
+SELECT * FROM Personal_Info WHERE  Nationality='Indian'
+SELECT MAX(Age) FROM Personal_Info
+
+SELECT * FROM Official_Info WHERE  Work_Location='Hyderabad'
+SELECT * FROM Official_Info WHERE  Role='Software Trainee'
+
+
+SELECT AVG(CTC) FROM Salary
+SELECT COUNT(Emp_Id) FROM Salary
+
+
+
+
+
